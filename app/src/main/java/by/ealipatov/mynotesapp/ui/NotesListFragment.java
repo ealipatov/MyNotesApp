@@ -5,7 +5,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -39,7 +42,29 @@ public class NotesListFragment extends Fragment {
         LinearLayout container = view.findViewById(R.id.container);
 
         for (Notes note: notes){
+            View itemView = getLayoutInflater().inflate(R.layout.item_note, container, false);
 
+            itemView.findViewById(R.id.root).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(requireContext(), note.getName(), Toast.LENGTH_LONG).show();
+                }
+            });
+
+            TextView name = itemView.findViewById(R.id.name);
+            name.setText(note.getName());
+
+            TextView date = itemView.findViewById(R.id.date);
+            date.setText(note.getDate());
+
+            ImageView important = itemView.findViewById(R.id.important);
+            if(!note.isImportant()){
+                important.setImageResource(R.drawable.ic_baseline_assignment_24);
+            } else
+                important.setImageResource(R.drawable.ic_baseline_assignment_late_24);
+
+
+            container.addView(itemView);
         }
     }
 }
