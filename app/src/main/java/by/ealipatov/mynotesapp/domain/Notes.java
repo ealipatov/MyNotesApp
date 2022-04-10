@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.RequiresApi;
 
-public class Notes {
+public class Notes implements Parcelable{
 
     private final String name;
     private final String description;
@@ -34,5 +34,15 @@ public class Notes {
 
     public boolean isImportant() {
         return important;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+
     }
 }
