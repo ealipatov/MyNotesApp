@@ -4,7 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android/MyNotesApp/app/src/main/res/drawable/ic_baseline_assignment_late_24.xml" value="0.121" />
+        <entry key="..\:/Android/MyNotesApp/app/src/main/res/layout-land/activity_main.xml" value="0.1728395061728395" />
         <entry key="..\:/Android/MyNotesApp/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Android/MyNotesApp/app/src/main/res/layout/activity_notes_details.xml" value="0.20416666666666666" />
         <entry key="..\:/Android/MyNotesApp/app/src/main/res/layout/fragmen_notes_details.xml" value="0.20416666666666666" />
         <entry key="..\:/Android/MyNotesApp/app/src/main/res/layout/fragmen_notes_list.xml" value="0.20416666666666666" />
         <entry key="..\:/Android/MyNotesApp/app/src/main/res/layout/item_note.xml" value="0.20416666666666666" />

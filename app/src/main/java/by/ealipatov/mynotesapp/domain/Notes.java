@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.RequiresApi;
 
-public class Notes implements Parcelable{
+public class Notes implements Parcelable {
 
     private final String name;
     private final String description;
@@ -19,6 +19,25 @@ public class Notes implements Parcelable{
         this.date = date;
         this.important = important;
     }
+
+    protected Notes(Parcel in) {
+        name = in.readString();
+        description = in.readString();
+        date = in.readString();
+        important = in.readByte() != 0;
+    }
+
+    public static final Creator<Notes> CREATOR = new Creator<Notes>() {
+        @Override
+        public Notes createFromParcel(Parcel in) {
+            return new Notes(in);
+        }
+
+        @Override
+        public Notes[] newArray(int size) {
+            return new Notes[size];
+        }
+    };
 
     public String getName() {
         return name;
@@ -43,6 +62,9 @@ public class Notes implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-
+        parcel.writeString(name);
+        parcel.writeString(description);
+        parcel.writeString(date);
+        parcel.writeByte((byte) (important ? 1 : 0));
     }
 }

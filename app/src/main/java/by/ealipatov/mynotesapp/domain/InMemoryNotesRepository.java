@@ -29,6 +29,7 @@ public class InMemoryNotesRepository implements NotesRepository{
         ArrayList<Notes> result = new ArrayList<>();
 
         result.add(new Notes("Test", "тестовая запись", "10.04.2022", false));
+        result.add(new Notes("Test2", "тестовая запись yjvth ldf", "11.04.2022", true));
 
         return result;
     }
