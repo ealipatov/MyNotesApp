@@ -8,13 +8,17 @@
 
     <TextView
         android:id="@+id/name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
-        android:layout_marginTop="16dp"
+        android:textSize="@dimen/textSizeHeadDetails"
+        android:layout_marginTop="@dimen/layout_marginTop"
+        android:layout_marginStart="@dimen/layout_marginStart"
+        android:gravity="left"
 
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/important"
+        app:layout_constraintBottom_toBottomOf="@id/important"
 
         tools:src="test"/>
 
@@ -22,10 +26,12 @@
         android:id="@+id/important"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="@dimen/layout_marginStart"
+        android:layout_marginTop="@dimen/layout_marginTop"
+        android:foregroundGravity="right"
+        android:layout_marginEnd="@dimen/layout_marginTop"
 
-        app:layout_constraintStart_toEndOf="@id/name"
+
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
 
@@ -35,10 +41,13 @@
         android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="@dimen/layout_marginStart"
+        android:layout_marginTop="@dimen/layout_marginTop"
+        android:textSize="@dimen/textSizeDetails"
 
-        app:layout_constraintTop_toBottomOf="@id/important"
+        app:layout_constraintTop_toBottomOf="@id/name"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
 
         tools:src="test"/>
 
@@ -46,11 +55,12 @@
         android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="@dimen/layout_marginStart"
 
         app:layout_constraintTop_toBottomOf="@id/description"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
 
         tools:src="test"/>
 
