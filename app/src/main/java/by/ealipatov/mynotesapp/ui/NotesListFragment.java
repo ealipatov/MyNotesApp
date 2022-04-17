@@ -1,5 +1,7 @@
 package by.ealipatov.mynotesapp.ui;
 
+import static android.content.Intent.getIntent;
+
 import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -25,6 +27,7 @@ public class NotesListFragment extends Fragment {
 
     public static final String NOTES_CLICKED_KEY = "NOTES_CLICKED_KEY";
     public static final String SELECTED_NOTES = "SELECTED_NOTES";
+    //private static final String DETAILS_NOTES ="DETAILS_NOTES";
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -60,7 +63,15 @@ public class NotesListFragment extends Fragment {
                                 .setFragmentResult(NOTES_CLICKED_KEY, bundle);
 
                     } else {
-                        NotesDetailsActivity.show(requireContext(), notes);
+
+                         NoteDetailsFragment noteDetailsFragment = NoteDetailsFragment.newInstance(notes);
+
+                            getParentFragmentManager()
+                                    .beginTransaction()
+                                    .replace(R.id.fragment_container, noteDetailsFragment)
+                                    .addToBackStack("detail_notes")
+                                    .commit();
+
                     }
 
                 }
