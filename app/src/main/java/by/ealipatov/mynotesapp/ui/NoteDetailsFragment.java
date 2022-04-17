@@ -22,7 +22,7 @@ public class NoteDetailsFragment extends Fragment {
     private ImageView important;
 
     public NoteDetailsFragment() {
-        super(R.layout.fragmen_notes_details);
+        super(R.layout.fragment_notes_details);
     }
 
     public static NoteDetailsFragment newInstance(Notes notes) {
