@@ -10,6 +10,7 @@
         android:layout_height="wrap_content" />
 
     <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/purple_500"
@@ -28,5 +29,12 @@
         android:orientation="vertical"/>
 
     </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/add_new_note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/new_note"
+        android:layout_gravity="end"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

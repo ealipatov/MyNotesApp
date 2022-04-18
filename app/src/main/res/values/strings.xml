@@ -2,4 +2,6 @@
     <string name="app_name">MyNotesApp</string>
     <string name="notes">Notes</string>
     <string name="hello_screen">Приложение ЗАМЕТКИ</string>
+    <string name="new_note">Новая заметка</string>
+    <string name="enter_message">Введите сообщение</string>
 </resources>

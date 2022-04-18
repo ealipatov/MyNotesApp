@@ -3,12 +3,15 @@ package by.ealipatov.mynotesapp.ui;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import java.util.List;
+import java.util.logging.LogRecord;
 
 import by.ealipatov.mynotesapp.R;
 import by.ealipatov.mynotesapp.domain.InMemoryNotesRepository;
@@ -25,6 +29,7 @@ public class NotesListFragment extends Fragment {
 
     public static final String NOTES_CLICKED_KEY = "NOTES_CLICKED_KEY";
     public static final String SELECTED_NOTES = "SELECTED_NOTES";
+    public static final String HELLO_SCREEN = "HELLO_SCREEN";
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -40,6 +45,44 @@ public class NotesListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        //Toolbar toolbar = view.findViewById(R.id.toolbar);
+
+
+        HelloScreenFragment helloScreenFragment = new HelloScreenFragment();
+
+
+        //TODO: разобраться с задержкой отображения фрагмента экрана приветствия
+       /* getParentFragmentManager()
+                .beginTransaction()
+                .add(R.id.fragment_container, helloScreenFragment)
+                .commit();
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        }, 20000L);
+
+
+        getParentFragmentManager()
+                .beginTransaction()
+                .remove(helloScreenFragment)
+                .commit();
+
+        */
+
+        view.findViewById(R.id.add_new_note).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getParentFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragment_container, new AddNewNoteFragment())
+                        .addToBackStack("new_note")
+                        .commit();
+            }
+        });
 
         List<Notes> note = InMemoryNotesRepository.getInstance(requireContext()).getAll();
 
@@ -61,6 +104,7 @@ public class NotesListFragment extends Fragment {
 
                     } else {
 
+
                          NoteDetailsFragment noteDetailsFragment = NoteDetailsFragment.newInstance(notes);
 
                             getParentFragmentManager()
@@ -71,6 +115,7 @@ public class NotesListFragment extends Fragment {
                     }
                 }
             });
+
 
 
             TextView name = itemView.findViewById(R.id.name);
