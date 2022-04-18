@@ -8,6 +8,8 @@
         <dimen name="layout_marginTop">16dp</dimen>
         <dimen name="textSizeHeadDetails">24sp</dimen>
         <dimen name="textSizeDetails">18sp</dimen>
+    <dimen name="edit_text_size">48dp</dimen>
+        <dimen name="button_radius">24dp</dimen>
 
 
 </resources>

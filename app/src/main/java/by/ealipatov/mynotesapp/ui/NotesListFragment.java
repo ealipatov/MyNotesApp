@@ -1,26 +1,24 @@
 package by.ealipatov.mynotesapp.ui;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import java.util.List;
-import java.util.logging.LogRecord;
 
+import by.ealipatov.mynotesapp.MainActivity;
 import by.ealipatov.mynotesapp.R;
 import by.ealipatov.mynotesapp.domain.InMemoryNotesRepository;
 import by.ealipatov.mynotesapp.domain.Notes;
@@ -45,33 +43,6 @@ public class NotesListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        //Toolbar toolbar = view.findViewById(R.id.toolbar);
-
-
-        HelloScreenFragment helloScreenFragment = new HelloScreenFragment();
-
-
-        //TODO: разобраться с задержкой отображения фрагмента экрана приветствия
-       /* getParentFragmentManager()
-                .beginTransaction()
-                .add(R.id.fragment_container, helloScreenFragment)
-                .commit();
-
-        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-            @Override
-            public void run() {
-
-            }
-        }, 20000L);
-
-
-        getParentFragmentManager()
-                .beginTransaction()
-                .remove(helloScreenFragment)
-                .commit();
-
-        */
 
         view.findViewById(R.id.add_new_note).setOnClickListener(new View.OnClickListener() {
             @Override
