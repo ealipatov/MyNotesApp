@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">MyNotesApp</string>
+    <string name="notes">Notes</string>
+    <string name="hello_screen">Приложение ЗАМЕТКИ</string>
+    <string name="new_note">Новая заметка</string>
+    <string name="enter_message">Введите сообщение</string>
+    <string name="save">Сохранить</string>
+    <string name="Press_to_btn">Нажмите на иконку для старта</string>
+    <string name="about">О программе</string>
+    <string name="settings">Настройки</string>
 </resources>

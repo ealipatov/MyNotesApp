@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/new_note"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/new_note"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        android:layout_gravity="center_horizontal"/>
+
+    <EditText
+        android:id="@+id/new_note_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/enter_message"
+        android:minHeight="@dimen/edit_text_size" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/save_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save"
+        app:cornerRadius="@dimen/button_radius"
+        android:layout_gravity="end">
+
+    </com.google.android.material.button.MaterialButton>
+
+</LinearLayout>
