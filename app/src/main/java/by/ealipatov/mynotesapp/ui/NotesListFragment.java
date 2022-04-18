@@ -5,11 +5,13 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -43,6 +45,26 @@ public class NotesListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        Toolbar toolbar = view.findViewById(R.id.toolbar);
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_search:
+                        Toast.makeText(requireContext(), "Поиск", Toast.LENGTH_SHORT).show();
+                        return true;
+                    case R.id.action_sort:
+                        Toast.makeText(requireContext(), "Сортировка", Toast.LENGTH_SHORT).show();
+                        return true;
+                }
+
+                return false;
+            }
+        });
+
+
 
         view.findViewById(R.id.add_new_note).setOnClickListener(new View.OnClickListener() {
             @Override

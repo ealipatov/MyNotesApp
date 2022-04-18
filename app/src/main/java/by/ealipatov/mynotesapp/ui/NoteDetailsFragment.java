@@ -1,12 +1,15 @@
 package by.ealipatov.mynotesapp.ui;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
 
@@ -38,6 +41,24 @@ public class NoteDetailsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        Toolbar toolbar = view.findViewById(R.id.toolbar);
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_send:
+                        Toast.makeText(requireContext(), "Отправить", Toast.LENGTH_SHORT).show();
+                        return true;
+                    case R.id.action_remind:
+                        Toast.makeText(requireContext(), "Напомнить", Toast.LENGTH_SHORT).show();
+                        return true;
+                }
+
+                return false;
+            }
+        });
 
         name = view.findViewById(R.id.name);
         description = view.findViewById(R.id.description);

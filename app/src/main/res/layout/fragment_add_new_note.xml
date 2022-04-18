@@ -6,12 +6,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/new_note"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/purple_500"
+            app:menu="@menu/menu_new_note"
+            app:title="@string/new_note" />
+    </com.google.android.material.appbar.AppBarLayout>
 
     <EditText
         android:id="@+id/new_note_text"
@@ -20,14 +26,5 @@
         android:hint="@string/enter_message"
         android:minHeight="@dimen/edit_text_size" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/save_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/save"
-        app:cornerRadius="@dimen/button_radius"
-        android:layout_gravity="end">
-
-    </com.google.android.material.button.MaterialButton>
 
 </LinearLayout>

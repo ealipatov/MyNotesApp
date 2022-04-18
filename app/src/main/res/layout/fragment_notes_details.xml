@@ -11,10 +11,11 @@
         tools:ignore="MissingConstraints">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar_details_scn"
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/purple_500"
+            app:menu="@menu/menu_detail_notes_toolbar"
             app:title="@string/notes_details" />
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -28,12 +29,14 @@
         android:layout_marginStart="@dimen/layout_marginStart"
         android:gravity="left"
 
+
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/important"
         app:layout_constraintBottom_toBottomOf="@id/important"
 
-        tools:src="test"/>
+        tools:src="test"
+        tools:ignore="RtlHardcoded" />
 
     <ImageView
         android:id="@+id/important"
