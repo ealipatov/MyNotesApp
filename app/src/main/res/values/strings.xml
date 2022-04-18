@@ -11,4 +11,6 @@
     <string name="notes_details">Details</string>
     <string name="action_search">Поиск</string>
     <string name="action_sort">Сортировать</string>
+    <string name="action_send">Отправить</string>
+    <string name="action_remind">Напомнить</string>
 </resources>
