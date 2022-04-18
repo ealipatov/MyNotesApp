@@ -15,4 +15,6 @@
     <string name="action_remind">Напомнить</string>
     <string name="drawer_open">Открыть шторку</string>
     <string name="drawer_close">Закрыть шторку</string>
+    <string name="name">Заметки</string>
+    <string name="app_notes">меню приложения:</string>
 </resources>
