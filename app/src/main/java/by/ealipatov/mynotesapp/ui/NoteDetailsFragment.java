@@ -43,6 +43,11 @@ public class NoteDetailsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Toolbar toolbar = view.findViewById(R.id.toolbar);
+
+        if (requireActivity() instanceof ToolbarHolder) {
+            ((ToolbarHolder)requireActivity()).setToolbar(toolbar);
+        }
+
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
 
             @Override
