@@ -8,4 +8,7 @@
     <string name="Press_to_btn">Нажмите на иконку для старта</string>
     <string name="about">О программе</string>
     <string name="settings">Настройки</string>
+    <string name="notes_details">Details</string>
+    <string name="action_search">Поиск</string>
+    <string name="action_sort">Сортировать</string>
 </resources>
