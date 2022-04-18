@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">MyNotesApp</string>
+    <string name="notes">Notes</string>
+    <string name="hello_screen">Приложение ЗАМЕТКИ</string>
+    <string name="new_note">Новая заметка</string>
+    <string name="enter_message">Введите сообщение</string>
+    <string name="save">Сохранить</string>
+    <string name="Press_to_btn">Нажмите на иконку для старта</string>
+    <string name="about">О программе</string>
+    <string name="settings">Настройки</string>
+    <string name="notes_details">Details</string>
+    <string name="action_search">Поиск</string>
+    <string name="action_sort">Сортировать</string>
+    <string name="action_send">Отправить</string>
+    <string name="action_remind">Напомнить</string>
+    <string name="drawer_open">Открыть шторку</string>
+    <string name="drawer_close">Закрыть шторку</string>
+    <string name="name">Заметки</string>
+    <string name="app_notes">меню приложения:</string>
 </resources>
