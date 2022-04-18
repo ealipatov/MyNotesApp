@@ -1,17 +1,14 @@
 package by.ealipatov.mynotesapp.domain;
 
-import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
-
-import androidx.annotation.RequiresApi;
 
 public class Notes implements Parcelable {
 
     private final String name;
     private final String description;
     private final String date;
-    private boolean important = false;
+    private final boolean important;
 
     public Notes(String name, String description, String date, boolean important) {
         this.name = name;

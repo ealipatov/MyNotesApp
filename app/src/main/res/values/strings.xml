@@ -17,4 +17,10 @@
     <string name="drawer_close">Закрыть шторку</string>
     <string name="name">Заметки</string>
     <string name="app_notes">меню приложения:</string>
+    <string name="action_close">Закрыть</string>
+    <string name="app_close"> Вы действительно хотите выйти из приложения?</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="about_body">Много много буков о сей чудной программе будет здесь написано.</string>
+
 </resources>

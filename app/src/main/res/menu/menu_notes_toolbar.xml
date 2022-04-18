@@ -13,6 +13,11 @@
         android:icon="@drawable/ic_baseline_sort_by_alpha_24"
         android:title="@string/action_sort"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_close"
+        android:icon="@drawable/ic_baseline_clear_24"
+        android:title="@string/action_close"
+        app:showAsAction="ifRoom" />
 
 
 </menu>

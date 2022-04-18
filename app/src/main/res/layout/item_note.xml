@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardElevation="@dimen/cardElevation">
+    app:cardElevation="@dimen/cardElevation"
+    app:cardCornerRadius="@dimen/paddingHorizontal">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:paddingHorizontal="@dimen/paddingHorizontal"
         android:paddingVertical="@dimen/paddingVertical">
 
@@ -18,15 +18,15 @@
             android:id="@+id/name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
             android:gravity="left"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
 
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
 
-            tools:src="test"/>
+            tools:text="test" />
 
         <TextView
             android:id="@+id/date"
@@ -34,13 +34,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/layout_marginStart"
 
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/name"
             app:layout_constraintEnd_toStartOf="@id/important"
+            app:layout_constraintStart_toEndOf="@id/name"
+            app:layout_constraintTop_toTopOf="parent"
 
-            tools:src="test"/>
-
+            tools:text="test" />
 
         <ImageView
             android:id="@+id/important"
@@ -49,17 +48,13 @@
             android:layout_marginStart="@dimen/layout_marginStart"
             android:gravity="right"
 
-            app:layout_constraintStart_toEndOf="@id/date"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/date"
+            app:layout_constraintTop_toTopOf="parent"
 
-            tools:src="@drawable/ic_baseline_assignment_late_24"/>
-
-
-
+            tools:src="@drawable/ic_baseline_assignment_late_24" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </com.google.android.material.card.MaterialCardView>

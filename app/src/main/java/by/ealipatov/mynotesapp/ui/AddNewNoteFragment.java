@@ -10,6 +10,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import by.ealipatov.mynotesapp.R;
 
 public class AddNewNoteFragment extends Fragment {
@@ -29,7 +31,7 @@ public class AddNewNoteFragment extends Fragment {
             public boolean onMenuItemClick(MenuItem item) {
 
                 if (item.getItemId() == R.id.action_save) {
-                    Toast.makeText(requireContext(), "Сохраняем заметку", Toast.LENGTH_SHORT).show();
+                    Snackbar.make(view, "Заметка сохранена", Snackbar.LENGTH_INDEFINITE).show();
                     return true;
                 }
 
