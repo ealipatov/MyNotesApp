@@ -49,5 +49,31 @@ public class HelloScreenFragment extends Fragment {
 
             }
         });
+
+        view.findViewById(R.id.about).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                getParentFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragment_container, new AboutFragment())
+                        .addToBackStack("about")
+                        .commit();
+
+            }
+        });
+
+        view.findViewById(R.id.setting).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                getParentFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragment_container, new SettingsFragment())
+                        .addToBackStack("setting")
+                        .commit();
+
+            }
+        });
     }
 }

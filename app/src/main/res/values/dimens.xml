@@ -10,6 +10,8 @@
         <dimen name="textSizeDetails">18sp</dimen>
     <dimen name="edit_text_size">48dp</dimen>
         <dimen name="button_radius">24dp</dimen>
+    <dimen name="padding_top">16dp</dimen>
+    <dimen name="margin_about_btn">40dp</dimen>
 
 
 </resources>
