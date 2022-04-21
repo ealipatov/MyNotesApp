@@ -89,16 +89,17 @@ public class NotesListFragment extends Fragment {
                 return false;
             }
         });
-        view.findViewById(R.id.add_new_note).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getParentFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.fragment_container, new AddNewNoteFragment())
-                        .addToBackStack("new_note")
-                        .commit();
-            }
-        });
+
+            view.findViewById(R.id.add_new_note).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getParentFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.fragment_container, new AddNewNoteFragment())
+                            .addToBackStack("new_note")
+                            .commit();
+                }
+            });
 
         RecyclerView notesList = view.findViewById(R.id.notes_list);
         notesList.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false));
