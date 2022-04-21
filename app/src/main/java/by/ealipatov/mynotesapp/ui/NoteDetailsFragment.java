@@ -13,6 +13,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
+
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
@@ -20,9 +23,8 @@ import by.ealipatov.mynotesapp.R;
 import by.ealipatov.mynotesapp.domain.Note;
 
 public class NoteDetailsFragment extends Fragment {
-    private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM, HH:mm", Locale.getDefault());
-
     private static final String ARG_NOTES = "ARG_NOTES";
+    private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM, HH:mm", Locale.getDefault());
     private TextView name;
     private TextView description;
     private TextView date;
@@ -49,7 +51,7 @@ public class NoteDetailsFragment extends Fragment {
         Toolbar toolbar = view.findViewById(R.id.toolbar);
 
         if (requireActivity() instanceof ToolbarHolder) {
-            ((ToolbarHolder)requireActivity()).setToolbar(toolbar);
+            ((ToolbarHolder) requireActivity()).setToolbar(toolbar);
         }
 
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
@@ -66,6 +68,19 @@ public class NoteDetailsFragment extends Fragment {
                 }
 
                 return false;
+            }
+        });
+
+        BottomNavigationView bottomNavigationView = view.findViewById(R.id.bottom_nav);
+
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                getParentFragmentManager()
+                        .popBackStack();
+
+                return true;
             }
         });
 
@@ -99,7 +114,7 @@ public class NoteDetailsFragment extends Fragment {
 
         if (!notes.isImportant()) {
             important.setImageResource(R.drawable.ic_baseline_assignment_24);
-        } else{
+        } else {
             important.setImageResource(R.drawable.ic_baseline_assignment_late_24);
         }
     }

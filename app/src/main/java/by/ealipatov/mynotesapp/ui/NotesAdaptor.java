@@ -20,6 +20,10 @@ import by.ealipatov.mynotesapp.domain.Note;
 
 public class NotesAdaptor extends RecyclerView.Adapter<NotesAdaptor.NotesViewHolder> {
 
+    private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM, HH:mm", Locale.getDefault());
+    private OnNoteClicked noteClicked;
+    private List<Note> dataNotes = new ArrayList<>();
+
     public OnNoteClicked getNoteClicked() {
         return noteClicked;
     }
@@ -28,13 +32,7 @@ public class NotesAdaptor extends RecyclerView.Adapter<NotesAdaptor.NotesViewHol
         this.noteClicked = noteClicked;
     }
 
-    private OnNoteClicked noteClicked;
-
-    private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM, HH:mm", Locale.getDefault());
-
-    private List<Note> dataNotes = new ArrayList<>();
-
-    public void setDataNotes (Collection<Note> notes){
+    public void setDataNotes(Collection<Note> notes) {
         dataNotes.addAll(notes);
     }
 
@@ -77,7 +75,6 @@ public class NotesAdaptor extends RecyclerView.Adapter<NotesAdaptor.NotesViewHol
         TextView date;
         ImageView important;
 
-
         public NotesViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -88,15 +85,13 @@ public class NotesAdaptor extends RecyclerView.Adapter<NotesAdaptor.NotesViewHol
             itemView.findViewById(R.id.card_view).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(noteClicked != null){
+                    if (noteClicked != null) {
                         int clickedPosition = getAdapterPosition();
                         noteClicked.onNoteClicked(dataNotes.get(clickedPosition));
                     }
                 }
             });
-
         }
-
     }
 }
 

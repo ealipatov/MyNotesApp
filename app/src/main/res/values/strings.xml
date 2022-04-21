@@ -22,5 +22,6 @@
     <string name="yes">Да</string>
     <string name="no">Нет</string>
     <string name="about_body">Много много буков о сей чудной программе будет здесь написано.</string>
+    <string name="action_notes">Список заметок</string>
 
 </resources>
