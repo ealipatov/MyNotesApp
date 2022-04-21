@@ -3,36 +3,38 @@ package by.ealipatov.mynotesapp.domain;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Notes implements Parcelable {
+import java.util.Date;
+
+public class Note implements Parcelable {
 
     private final String name;
     private final String description;
-    private final String date;
+    private Date date;
     private final boolean important;
 
-    public Notes(String name, String description, String date, boolean important) {
+    public Note(String name, String description, Date date, boolean important) {
         this.name = name;
         this.description = description;
         this.date = date;
         this.important = important;
     }
 
-    protected Notes(Parcel in) {
+    protected Note(Parcel in) {
         name = in.readString();
         description = in.readString();
-        date = in.readString();
+        date = new Date();              // in.readString();
         important = in.readByte() != 0;
     }
 
-    public static final Creator<Notes> CREATOR = new Creator<Notes>() {
+    public static final Creator<Note> CREATOR = new Creator<Note>() {
         @Override
-        public Notes createFromParcel(Parcel in) {
-            return new Notes(in);
+        public Note createFromParcel(Parcel in) {
+            return new Note(in);
         }
 
         @Override
-        public Notes[] newArray(int size) {
-            return new Notes[size];
+        public Note[] newArray(int size) {
+            return new Note[size];
         }
     };
 
@@ -44,7 +46,7 @@ public class Notes implements Parcelable {
         return description;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
@@ -61,7 +63,7 @@ public class Notes implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(name);
         parcel.writeString(description);
-        parcel.writeString(date);
+        parcel.writeString(date.toString());
         parcel.writeByte((byte) (important ? 1 : 0));
     }
 }

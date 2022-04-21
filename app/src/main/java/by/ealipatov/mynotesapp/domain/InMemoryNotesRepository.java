@@ -3,13 +3,14 @@ package by.ealipatov.mynotesapp.domain;
 import android.content.Context;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class InMemoryNotesRepository implements NotesRepository{
 
     private static NotesRepository INSTANCE;
 
-    private Context context;
+    private final Context context;
 
     private InMemoryNotesRepository(Context context) {
         this.context = context;
@@ -25,19 +26,19 @@ public class InMemoryNotesRepository implements NotesRepository{
     }
 
     @Override
-    public List<Notes> getAll() {
-        ArrayList<Notes> result = new ArrayList<>();
+    public List<Note> getAll() {
+        ArrayList<Note> result = new ArrayList<>();
 
-        result.add(new Notes("Test", "тестовая запись", "10.04.2022", false));
-        result.add(new Notes("Test2", "тестовая запись 2", "11.04.2022", true));
-        result.add(new Notes("Test3", "тестовая запись 3", "11.04.2022", false));
-        result.add(new Notes("Test4", "тестовая запись 4", "11.04.2022", true));
+        result.add(new Note("Test", "тестовая запись", new Date(), false));
+        result.add(new Note("Test2", "тестовая запись 2", new Date(), true));
+        result.add(new Note("Test3", "тестовая запись 3", new Date(), false));
+        result.add(new Note("Test4", "тестовая запись 4", new Date(), true));
 
         return result;
     }
 
     @Override
-    public void add(Notes notes) {
+    public void add(Note notes) {
 
     }
 }

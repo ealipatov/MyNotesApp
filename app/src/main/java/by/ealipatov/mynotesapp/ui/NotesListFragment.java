@@ -19,12 +19,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 import by.ealipatov.mynotesapp.R;
 import by.ealipatov.mynotesapp.domain.InMemoryNotesRepository;
-import by.ealipatov.mynotesapp.domain.Notes;
+import by.ealipatov.mynotesapp.domain.Note;
 
 public class NotesListFragment extends Fragment {
 
@@ -99,48 +101,42 @@ public class NotesListFragment extends Fragment {
                         .commit();
             }
         });
-        List<Notes> note = InMemoryNotesRepository.getInstance(requireContext()).getAll();
-        LinearLayout container = view.findViewById(R.id.container);
 
-        for (Notes notes : note) {
-            View itemView = getLayoutInflater().inflate(R.layout.item_note, container, false);
+        RecyclerView notesList = view.findViewById(R.id.notes_list);
+        notesList.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false));
 
-            itemView.findViewById(R.id.root).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+        NotesAdaptor adaptor = new NotesAdaptor();
+        adaptor.setNoteClicked(new OnNoteClicked() {
+            @Override
+            public void onNoteClicked(Note notes) {
+                if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
 
-                    if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable(SELECTED_NOTES, notes);
+                    getParentFragmentManager()
+                            .setFragmentResult(NOTES_CLICKED_KEY, bundle);
 
-                        Bundle bundle = new Bundle();
-                        bundle.putParcelable(SELECTED_NOTES, notes);
-                        getParentFragmentManager()
-                                .setFragmentResult(NOTES_CLICKED_KEY, bundle);
-
-                    } else {
-                        noteDetailsFragment = NoteDetailsFragment.newInstance(notes);
-
-                        getParentFragmentManager()
-                                .beginTransaction()
-                                .replace(R.id.fragment_container, noteDetailsFragment)
-                                .addToBackStack("detail_notes")
-                                .commit();
-                    }
+                } else {
+                    NoteDetailsFragment noteDetailsFragment = NoteDetailsFragment.newInstance(notes);
+                    getParentFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.fragment_container, noteDetailsFragment)
+                            .addToBackStack("detail_notes")
+                            .commit();
                 }
-            });
-            TextView name = itemView.findViewById(R.id.name);
-            name.setText(notes.getName());
 
-            TextView date = itemView.findViewById(R.id.date);
-            date.setText(notes.getDate());
-
-            ImageView important = itemView.findViewById(R.id.important);
-            if (!notes.isImportant()) {
-                important.setImageResource(R.drawable.ic_baseline_assignment_24);
-            } else {
-                important.setImageResource(R.drawable.ic_baseline_assignment_late_24);
             }
-            container.addView(itemView);
-        }
+        });
+
+        notesList.setAdapter(adaptor);
+
+        List<Note> notes = InMemoryNotesRepository.getInstance(requireContext()).getAll();
+
+        adaptor.setDataNotes(notes);
+
+        adaptor.notifyDataSetChanged();
+
+
     }
 
 }

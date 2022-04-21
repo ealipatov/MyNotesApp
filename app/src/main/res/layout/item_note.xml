@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:id="@+id/root"
     android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+<com.google.android.material.card.MaterialCardView
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardElevation="@dimen/cardElevation"
+    android:layout_marginHorizontal="@dimen/paddingHorizontal"
+    android:layout_marginVertical="@dimen/paddingVertical"
     app:cardCornerRadius="@dimen/paddingHorizontal">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,7 +25,6 @@
             android:id="@+id/name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="left"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
 
             app:layout_constraintBottom_toBottomOf="parent"
@@ -39,14 +45,13 @@
             app:layout_constraintStart_toEndOf="@id/name"
             app:layout_constraintTop_toTopOf="parent"
 
-            tools:text="test" />
+            tools:text="data" />
 
         <ImageView
             android:id="@+id/important"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/layout_marginStart"
-            android:gravity="right"
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -58,3 +63,5 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>
+
+</FrameLayout>

@@ -11,14 +11,15 @@ android:layout_height="match_parent">
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:name="by.ealipatov.mynotesapp.ui.NotesListFragment"
-        tools:context=".MainActivity"/>
+        tools:context=".MainActivity"
+        tools:layout="@layout/item_note" />
 
-<com.google.android.material.navigation.NavigationView
-    android:id="@+id/navigation"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:layout_gravity="start"
-    app:menu="@menu/menu_navi_drawer"
-    app:headerLayout="@layout/item_navi_header" />
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/menu_navi_drawer"
+        app:headerLayout="@layout/item_navi_header" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -13,10 +13,14 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
 import by.ealipatov.mynotesapp.R;
-import by.ealipatov.mynotesapp.domain.Notes;
+import by.ealipatov.mynotesapp.domain.Note;
 
 public class NoteDetailsFragment extends Fragment {
+    private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM, HH:mm", Locale.getDefault());
 
     private static final String ARG_NOTES = "ARG_NOTES";
     private TextView name;
@@ -28,7 +32,7 @@ public class NoteDetailsFragment extends Fragment {
         super(R.layout.fragment_notes_details);
     }
 
-    public static NoteDetailsFragment newInstance(Notes notes) {
+    public static NoteDetailsFragment newInstance(Note notes) {
 
         Bundle args = new Bundle();
         args.putParcelable(ARG_NOTES, notes);
@@ -74,23 +78,24 @@ public class NoteDetailsFragment extends Fragment {
                 .setFragmentResultListener(NotesListFragment.NOTES_CLICKED_KEY, getViewLifecycleOwner(), new FragmentResultListener() {
                     @Override
                     public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
-                        Notes notes = result.getParcelable(NotesListFragment.SELECTED_NOTES);
+                        Note notes = result.getParcelable(NotesListFragment.SELECTED_NOTES);
 
                         showNotes(notes);
                     }
                 });
 
         if (getArguments() != null && getArguments().containsKey(ARG_NOTES)) {
-            Notes notes = getArguments().getParcelable(ARG_NOTES);
+            Note notes = getArguments().getParcelable(ARG_NOTES);
 
             showNotes(notes);
         }
     }
 
-    private void showNotes(Notes notes) {
+    public void showNotes(Note notes) {
         name.setText(notes.getName());
         description.setText(notes.getDescription());
-        date.setText(notes.getDate());
+        date.setText(simpleDateFormat.format(notes.getDate()).toString());
+
 
         if (!notes.isImportant()) {
             important.setImageResource(R.drawable.ic_baseline_assignment_24);
