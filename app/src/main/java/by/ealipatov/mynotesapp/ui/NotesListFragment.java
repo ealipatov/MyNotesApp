@@ -1,6 +1,6 @@
 package by.ealipatov.mynotesapp.ui;
 
-import android.app.Activity;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -22,7 +22,6 @@ import androidx.fragment.app.Fragment;
 
 import java.util.List;
 
-import by.ealipatov.mynotesapp.MainActivity;
 import by.ealipatov.mynotesapp.R;
 import by.ealipatov.mynotesapp.domain.InMemoryNotesRepository;
 import by.ealipatov.mynotesapp.domain.Notes;
@@ -31,7 +30,6 @@ public class NotesListFragment extends Fragment {
 
     public static final String NOTES_CLICKED_KEY = "NOTES_CLICKED_KEY";
     public static final String SELECTED_NOTES = "SELECTED_NOTES";
-    public static final String HELLO_SCREEN = "HELLO_SCREEN";
     public NoteDetailsFragment noteDetailsFragment;
 
     @Override
@@ -57,6 +55,7 @@ public class NotesListFragment extends Fragment {
 
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
 
+            @SuppressLint("NonConstantResourceId")
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
@@ -76,28 +75,20 @@ public class NotesListFragment extends Fragment {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
 
-                                        getParentFragmentManager()
-                                                .beginTransaction()
-                                                .remove(noteDetailsFragment)
-                                                .commit();
+                                        getActivity().finish();
                                     }
                                 })
                                 .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                         Toast.makeText(requireContext(), "Остаемся", Toast.LENGTH_SHORT).show();
-
                                     }
                                 }).show();
                         return true;
-
                 }
-
                 return false;
             }
         });
-
-
         view.findViewById(R.id.add_new_note).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -108,9 +99,7 @@ public class NotesListFragment extends Fragment {
                         .commit();
             }
         });
-
         List<Notes> note = InMemoryNotesRepository.getInstance(requireContext()).getAll();
-
         LinearLayout container = view.findViewById(R.id.container);
 
         for (Notes notes : note) {
@@ -128,8 +117,6 @@ public class NotesListFragment extends Fragment {
                                 .setFragmentResult(NOTES_CLICKED_KEY, bundle);
 
                     } else {
-
-
                         noteDetailsFragment = NoteDetailsFragment.newInstance(notes);
 
                         getParentFragmentManager()
@@ -140,8 +127,6 @@ public class NotesListFragment extends Fragment {
                     }
                 }
             });
-
-
             TextView name = itemView.findViewById(R.id.name);
             name.setText(notes.getName());
 
@@ -154,8 +139,8 @@ public class NotesListFragment extends Fragment {
             } else {
                 important.setImageResource(R.drawable.ic_baseline_assignment_late_24);
             }
-
             container.addView(itemView);
         }
     }
+
 }
