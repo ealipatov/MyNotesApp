@@ -4,6 +4,7 @@ import android.content.Context;
 
 import android.os.Looper;
 import android.os.Handler;
+import android.widget.CheckBox;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,22 +30,8 @@ public class InMemoryNotesRepository implements NotesRepository {
         return INSTANCE;
     }
 
-    public void inMemoryNotesRepository() {
-        data.add(new Note("Test1", "тестовая запись 1", new Date(), false));
-        data.add(new Note("Test2", "тестовая запись 2", new Date(), true));
-        data.add(new Note("Test3", "тестовая запись 3", new Date(), false));
-        data.add(new Note("Test4", "тестовая запись 4", new Date(), true));
-        data.add(new Note("Test5", "тестовая запись 5", new Date(), false));
-        data.add(new Note("Test6", "тестовая запись 6", new Date(), false));
-        data.add(new Note("Test7", "тестовая запись 7", new Date(), false));
-        data.add(new Note("Test8", "тестовая запись 8", new Date(), false));
-        data.add(new Note("Test9", "тестовая запись 9", new Date(), false));
-        data.add(new Note("Test10", "тестовая запись 10", new Date(), false));
-        data.add(new Note("Test11", "тестовая запись 10", new Date(), false));
-        data.add(new Note("Test12", "тестовая запись 10", new Date(), false));
-        data.add(new Note("Test13", "тестовая запись 10", new Date(), false));
-        data.add(new Note("Test14", "тестовая запись 10", new Date(), false));
-        data.add(new Note("Test15", "тестовая запись 10", new Date(), false));
+    public InMemoryNotesRepository() {
+
     }
 
 
@@ -70,5 +57,34 @@ public class InMemoryNotesRepository implements NotesRepository {
             }
         });
 
+    }
+
+    @Override
+    public void addNote(String title, String text, CheckBox checkBox, Callback<Note> callback) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(1000L);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                boolean important = false;
+                if(checkBox.isChecked()){
+                    important = true;
+                }
+
+                Note note = new Note(title, text, new Date(), important);
+                data.add(note);
+
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        callback.onSuccess(note);
+                    }
+                });
+            }
+        });
     }
 }

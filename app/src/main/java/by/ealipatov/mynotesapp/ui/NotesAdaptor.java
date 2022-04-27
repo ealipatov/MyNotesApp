@@ -36,6 +36,12 @@ public class NotesAdaptor extends RecyclerView.Adapter<NotesAdaptor.NotesViewHol
         dataNotes.addAll(notes);
     }
 
+    public int addNote (Note note) {
+        dataNotes.add(note);
+
+        return dataNotes.size() - 1;
+    }
+
     //Делаем "слепок" элемента списка
     @NonNull
     @Override

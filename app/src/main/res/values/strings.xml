@@ -29,5 +29,7 @@
     <string name="send">Отправить</string>
     <string name="remind">Напомнить</string>
     <string name="importance">Важность</string>
+    <string name="enter_title">Введите заголовок</string>
+    <string name="if_important">Отметить как важное?</string>
 
 </resources>

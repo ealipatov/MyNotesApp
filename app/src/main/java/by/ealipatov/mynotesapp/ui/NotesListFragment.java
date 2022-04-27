@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -153,8 +154,19 @@ public class NotesListFragment extends Fragment {
 
             }
         });
+/*
+        getParentFragmentManager().
+                setFragmentResultListener(AddNewNoteFragment.KEY_RESULT, getViewLifecycleOwner(), new FragmentResultListener() {
+                    @Override
+                    public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+                        Note note = result.getParcelable(AddNewNoteFragment.ARG_NOTE);
+                        int index = adaptor.addNote(note);
+                        adaptor.notifyItemInserted(index);
 
-
+                        notesList.smoothScrollToPosition(index);
+                    }
+                });
+*/
 
     }
 

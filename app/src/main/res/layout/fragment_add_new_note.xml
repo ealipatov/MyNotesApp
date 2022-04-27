@@ -24,6 +24,21 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <EditText
+            android:id="@+id/new_note_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_title"
+            android:importantForAutofill="no"
+            android:inputType="textMultiLine"
+            android:minHeight="@dimen/edit_text_size" />
+
+        <CheckBox
+            android:id="@+id/checkbox_important"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/if_important"/>
+
+        <EditText
             android:id="@+id/new_note_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -31,6 +46,7 @@
             android:importantForAutofill="no"
             android:inputType="textMultiLine"
             android:minHeight="@dimen/edit_text_size" />
+
 
     </LinearLayout>
 
