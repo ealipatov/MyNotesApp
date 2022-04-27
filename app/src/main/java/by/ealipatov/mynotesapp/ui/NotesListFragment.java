@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import by.ealipatov.mynotesapp.R;
+import by.ealipatov.mynotesapp.domain.Callback;
 import by.ealipatov.mynotesapp.domain.InMemoryNotesRepository;
 import by.ealipatov.mynotesapp.domain.Note;
 
@@ -129,11 +131,29 @@ public class NotesListFragment extends Fragment {
 
         notesList.setAdapter(adaptor);
 
-        List<Note> notes = InMemoryNotesRepository.getInstance(requireContext()).getAll();
+        ProgressBar progressBar = view.findViewById(R.id.progress_bar);
 
-        adaptor.setDataNotes(notes);
+        progressBar.setVisibility(View.VISIBLE);
 
-        adaptor.notifyDataSetChanged();
+        InMemoryNotesRepository.getInstance(requireContext()).getAll(new Callback<List<Note>>() {
+            @Override
+            public void onSuccess(List<Note> data) {
+
+                adaptor.setDataNotes(data);
+
+                adaptor.notifyDataSetChanged();
+
+                progressBar.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onError(Throwable exception) {
+
+                progressBar.setVisibility(View.GONE);
+
+            }
+        });
+
 
 
     }
