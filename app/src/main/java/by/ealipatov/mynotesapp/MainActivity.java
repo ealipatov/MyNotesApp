@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity implements ToolbarHolder {
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.fragment_container, new NotesListFragment())
                                 .commit();
-
                         drawerLayout.close();
 
                         return true;
@@ -50,7 +49,6 @@ public class MainActivity extends AppCompatActivity implements ToolbarHolder {
                                 .replace(R.id.fragment_container, new SettingsFragment())
                                 .addToBackStack("settings")
                                 .commit();
-
                         drawerLayout.close();
 
                         return true;
@@ -62,16 +60,15 @@ public class MainActivity extends AppCompatActivity implements ToolbarHolder {
                                 .replace(R.id.fragment_container, new AboutFragment())
                                 .addToBackStack("about")
                                 .commit();
-
                         drawerLayout.close();
 
                         return true;
-
                 }
                 return false;
             }
         });
     }
+
     @Override
     public void setToolbar(Toolbar toolbar) {
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(

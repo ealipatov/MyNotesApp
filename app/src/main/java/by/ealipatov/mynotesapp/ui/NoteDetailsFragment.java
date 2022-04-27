@@ -60,13 +60,12 @@ public class NoteDetailsFragment extends Fragment {
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.action_send:
-                        Toast.makeText(requireContext(), "Отправить", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(requireContext(), R.string.send, Toast.LENGTH_SHORT).show();
                         return true;
                     case R.id.action_remind:
-                        Toast.makeText(requireContext(), "Напомнить", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(requireContext(), R.string.remind, Toast.LENGTH_SHORT).show();
                         return true;
                 }
-
                 return false;
             }
         });
@@ -109,14 +108,12 @@ public class NoteDetailsFragment extends Fragment {
     public void showNotes(Note notes) {
         name.setText(notes.getName());
         description.setText(notes.getDescription());
-        date.setText(simpleDateFormat.format(notes.getDate()).toString());
+        date.setText(simpleDateFormat.format(notes.getDate()));
 
-
-        if (!notes.isImportant()) {
+        if (notes.isImportant()) {
             important.setImageResource(R.drawable.ic_baseline_assignment_24);
         } else {
             important.setImageResource(R.drawable.ic_baseline_assignment_late_24);
         }
     }
-
 }

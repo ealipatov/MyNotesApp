@@ -33,10 +33,8 @@ public class AddNewNoteFragment extends Fragment {
                     Snackbar.make(view, "Заметка сохранена", Snackbar.LENGTH_INDEFINITE).show();
                     return true;
                 }
-
                 return false;
             }
         });
-
     }
 }

@@ -6,7 +6,7 @@ import by.ealipatov.mynotesapp.R;
 
 public class AboutFragment extends Fragment {
 
-    public AboutFragment (){
+    public AboutFragment() {
         super(R.layout.fragment_about);
     }
 

@@ -4,6 +4,6 @@ import androidx.appcompat.widget.Toolbar;
 
 public interface ToolbarHolder {
 
-        void setToolbar(Toolbar toolbar);
+    void setToolbar(Toolbar toolbar);
 
 }

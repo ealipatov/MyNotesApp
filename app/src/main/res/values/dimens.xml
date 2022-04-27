@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-        <dimen name="layout_marginStart">16sp</dimen>
-        <dimen name="paddingHorizontal">16dp</dimen>
-        <dimen name="paddingVertical">4dp</dimen>
-        <dimen name="cardElevation">0dp</dimen>
-        <dimen name="layout_marginTop">16dp</dimen>
-        <dimen name="textSizeHeadDetails">24sp</dimen>
-        <dimen name="textSizeDetails">18sp</dimen>
+    <dimen name="layout_marginStart">16sp</dimen>
+    <dimen name="padding_horizontal">16dp</dimen>
+    <dimen name="padding_vertical">4dp</dimen>
+    <dimen name="card_elevation">0dp</dimen>
+    <dimen name="layout_marginTop">16dp</dimen>
+    <dimen name="text_size_head_details">24sp</dimen>
+    <dimen name="text_size_details">18sp</dimen>
     <dimen name="edit_text_size">48dp</dimen>
-        <dimen name="button_radius">24dp</dimen>
+    <dimen name="button_radius">24dp</dimen>
     <dimen name="padding_top">16dp</dimen>
     <dimen name="margin_about_btn">40dp</dimen>
-
 
 </resources>

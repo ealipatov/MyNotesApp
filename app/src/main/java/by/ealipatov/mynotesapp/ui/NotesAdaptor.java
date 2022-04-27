@@ -22,7 +22,7 @@ public class NotesAdaptor extends RecyclerView.Adapter<NotesAdaptor.NotesViewHol
 
     private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM, HH:mm", Locale.getDefault());
     private OnNoteClicked noteClicked;
-    private List<Note> dataNotes = new ArrayList<>();
+    private final List<Note> dataNotes = new ArrayList<>();
 
     public OnNoteClicked getNoteClicked() {
         return noteClicked;
@@ -56,7 +56,7 @@ public class NotesAdaptor extends RecyclerView.Adapter<NotesAdaptor.NotesViewHol
         holder.name.setText(note.getName());
         holder.date.setText(simpleDateFormat.format(note.getDate()));
 
-        if (!note.isImportant()) {
+        if (note.isImportant()) {
             holder.important.setImageResource(R.drawable.ic_baseline_assignment_24);
         } else {
             holder.important.setImageResource(R.drawable.ic_baseline_assignment_late_24);

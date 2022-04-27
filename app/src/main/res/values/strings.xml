@@ -5,7 +5,7 @@
     <string name="new_note">Новая заметка</string>
     <string name="enter_message">Введите сообщение</string>
     <string name="save">Сохранить</string>
-    <string name="Press_to_btn">Нажмите на иконку для старта</string>
+    <string name="press_to_btn">Нажмите на иконку для старта</string>
     <string name="about">О программе</string>
     <string name="settings">Настройки</string>
     <string name="notes_details">Details</string>
@@ -16,12 +16,18 @@
     <string name="drawer_open">Открыть шторку</string>
     <string name="drawer_close">Закрыть шторку</string>
     <string name="name">Заметки</string>
-    <string name="app_notes">меню приложения:</string>
+    <string name="app_notes">Меню приложения:</string>
     <string name="action_close">Закрыть</string>
     <string name="app_close"> Вы действительно хотите выйти из приложения?</string>
     <string name="yes">Да</string>
     <string name="no">Нет</string>
     <string name="about_body">Много много буков о сей чудной программе будет здесь написано.</string>
     <string name="action_notes">Список заметок</string>
+    <string name="staying">Остаемся</string>
+    <string name="find">Поиск</string>
+    <string name="sort">Сортировка</string>
+    <string name="send">Отправить</string>
+    <string name="remind">Напомнить</string>
+    <string name="importance">Важность</string>
 
 </resources>

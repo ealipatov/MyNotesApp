@@ -6,7 +6,7 @@ import by.ealipatov.mynotesapp.R;
 
 public class SettingsFragment extends Fragment {
 
-    public SettingsFragment (){
+    public SettingsFragment() {
         super(R.layout.fragment_setting);
     }
 }

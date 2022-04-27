@@ -6,22 +6,18 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class InMemoryNotesRepository implements NotesRepository{
+public class InMemoryNotesRepository implements NotesRepository {
 
     private static NotesRepository INSTANCE;
 
-    private final Context context;
-
     private InMemoryNotesRepository(Context context) {
-        this.context = context;
     }
 
-    public static NotesRepository getInstance(Context context){
+    public static NotesRepository getInstance(Context context) {
 
-        if(INSTANCE == null){
+        if (INSTANCE == null) {
             INSTANCE = new InMemoryNotesRepository(context);
         }
-
         return INSTANCE;
     }
 
@@ -44,7 +40,6 @@ public class InMemoryNotesRepository implements NotesRepository{
         result.add(new Note("Test13", "тестовая запись 10", new Date(), false));
         result.add(new Note("Test14", "тестовая запись 10", new Date(), false));
         result.add(new Note("Test15", "тестовая запись 10", new Date(), false));
-
 
         return result;
     }

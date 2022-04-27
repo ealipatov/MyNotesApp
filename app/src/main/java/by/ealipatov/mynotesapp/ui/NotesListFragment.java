@@ -60,10 +60,10 @@ public class NotesListFragment extends Fragment {
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.action_search:
-                        Toast.makeText(requireContext(), "Поиск", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(requireContext(), R.string.find, Toast.LENGTH_SHORT).show();
                         return true;
                     case R.id.action_sort:
-                        Toast.makeText(requireContext(), "Сортировка", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(requireContext(), R.string.sort, Toast.LENGTH_SHORT).show();
                         return true;
                     case R.id.action_close:
                         new AlertDialog.Builder(requireContext())
@@ -81,7 +81,7 @@ public class NotesListFragment extends Fragment {
                                 .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
-                                        Toast.makeText(requireContext(), "Остаемся", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(requireContext(), R.string.staying, Toast.LENGTH_SHORT).show();
                                     }
                                 }).show();
                         return true;
@@ -90,16 +90,16 @@ public class NotesListFragment extends Fragment {
             }
         });
 
-            view.findViewById(R.id.add_new_note).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    getParentFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.fragment_container, new AddNewNoteFragment())
-                            .addToBackStack("new_note")
-                            .commit();
-                }
-            });
+        view.findViewById(R.id.add_new_note).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getParentFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragment_container, new AddNewNoteFragment())
+                        .addToBackStack("new_note")
+                        .commit();
+            }
+        });
 
         RecyclerView notesList = view.findViewById(R.id.notes_list);
         notesList.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false));
