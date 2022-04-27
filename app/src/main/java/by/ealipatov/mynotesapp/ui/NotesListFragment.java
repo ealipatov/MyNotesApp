@@ -6,7 +6,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +19,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentResultListener;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -107,7 +108,7 @@ public class NotesListFragment extends Fragment {
         RecyclerView notesList = view.findViewById(R.id.notes_list);
         notesList.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false));
 
-        NotesAdaptor adaptor = new NotesAdaptor();
+        NotesAdaptor adaptor = new NotesAdaptor(this);
         adaptor.setNoteClicked(new OnNoteClicked() {
             @Override
             public void onNoteClicked(Note notes) {
@@ -170,4 +171,27 @@ public class NotesListFragment extends Fragment {
 
     }
 
+    @Override
+    public void onCreateContextMenu(@NonNull ContextMenu menu, @NonNull View v, @Nullable ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+
+        MenuInflater menuInflater = requireActivity().getMenuInflater();
+        menuInflater.inflate(R.menu.menu_notes_context, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.action_edit:
+                Toast.makeText(requireContext(),"edit", Toast.LENGTH_SHORT).show();
+                return true;
+
+            case R.id.action_delete:
+                Toast.makeText(requireContext(),"delete", Toast.LENGTH_SHORT).show();
+                return true;
+        }
+
+        return super.onContextItemSelected(item);
+    }
 }

@@ -7,6 +7,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.SimpleDateFormat;
@@ -23,6 +25,11 @@ public class NotesAdaptor extends RecyclerView.Adapter<NotesAdaptor.NotesViewHol
     private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM, HH:mm", Locale.getDefault());
     private OnNoteClicked noteClicked;
     private final List<Note> dataNotes = new ArrayList<>();
+    private Fragment fragment;
+
+    public NotesAdaptor(Fragment fragment) {
+        this.fragment = fragment;
+    }
 
     public OnNoteClicked getNoteClicked() {
         return noteClicked;
@@ -88,13 +95,28 @@ public class NotesAdaptor extends RecyclerView.Adapter<NotesAdaptor.NotesViewHol
             date = itemView.findViewById(R.id.date);
             important = itemView.findViewById(R.id.important);
 
-            itemView.findViewById(R.id.card_view).setOnClickListener(new View.OnClickListener() {
+            //Показывать контекстное меню
+            CardView cardView = itemView.findViewById(R.id.card_view);
+            fragment.registerForContextMenu(cardView);
+
+            cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     if (noteClicked != null) {
                         int clickedPosition = getAdapterPosition();
                         noteClicked.onNoteClicked(dataNotes.get(clickedPosition));
                     }
+                }
+            });
+
+            cardView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+
+                    cardView.showContextMenu();
+
+                    //true - долгое нажатие обработано
+                    return true;
                 }
             });
         }
