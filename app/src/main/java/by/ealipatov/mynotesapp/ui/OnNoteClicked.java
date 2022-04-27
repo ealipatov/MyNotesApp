@@ -4,4 +4,6 @@ import by.ealipatov.mynotesapp.domain.Note;
 
 public interface OnNoteClicked {
     void onNoteClicked(Note note);
+
+    void onNoteLongClicked(Note note, int index);
 }

@@ -9,6 +9,8 @@ public interface NotesRepository {
 
     void getAll(Callback<List<Note>> callback);
 
-    void addNote (String title, String text, CheckBox checkBox, Callback<Note> callback);
+    void addNote(String title, String text, CheckBox checkBox, Callback<Note> callback);
+
+    void deleteNote(Note note, Callback<Void> callback);
 
 }

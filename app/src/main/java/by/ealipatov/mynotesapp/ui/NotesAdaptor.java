@@ -23,8 +23,8 @@ import by.ealipatov.mynotesapp.domain.Note;
 public class NotesAdaptor extends RecyclerView.Adapter<NotesAdaptor.NotesViewHolder> {
 
     private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM, HH:mm", Locale.getDefault());
-    private OnNoteClicked noteClicked;
     private final List<Note> dataNotes = new ArrayList<>();
+    private OnNoteClicked noteClicked;
     private Fragment fragment;
 
     public NotesAdaptor(Fragment fragment) {
@@ -43,11 +43,13 @@ public class NotesAdaptor extends RecyclerView.Adapter<NotesAdaptor.NotesViewHol
         dataNotes.addAll(notes);
     }
 
-    public int addNote (Note note) {
+    public int addNote(Note note) {
         dataNotes.add(note);
 
         return dataNotes.size() - 1;
     }
+
+
 
     //Делаем "слепок" элемента списка
     @NonNull
@@ -82,6 +84,10 @@ public class NotesAdaptor extends RecyclerView.Adapter<NotesAdaptor.NotesViewHol
         return dataNotes.size();
     }
 
+    public void deleteNote(Note selectedNote) {
+        dataNotes.remove(selectedNote);
+    }
+
     class NotesViewHolder extends RecyclerView.ViewHolder {
 
         TextView name;
@@ -114,6 +120,11 @@ public class NotesAdaptor extends RecyclerView.Adapter<NotesAdaptor.NotesViewHol
                 public boolean onLongClick(View view) {
 
                     cardView.showContextMenu();
+
+                    if (noteClicked != null) {
+                        int clickedPosition = getAdapterPosition();
+                        noteClicked.onNoteLongClicked(dataNotes.get(clickedPosition), clickedPosition);
+                    }
 
                     //true - долгое нажатие обработано
                     return true;

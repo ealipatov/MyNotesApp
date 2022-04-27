@@ -34,6 +34,10 @@ public class NotesListFragment extends Fragment {
     public static final String NOTES_CLICKED_KEY = "NOTES_CLICKED_KEY";
     public static final String SELECTED_NOTES = "SELECTED_NOTES";
     public NoteDetailsFragment noteDetailsFragment;
+    private Note selectedNote;
+    private int selectedPosition;
+    private NotesAdaptor adaptor;
+
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -108,7 +112,7 @@ public class NotesListFragment extends Fragment {
         RecyclerView notesList = view.findViewById(R.id.notes_list);
         notesList.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false));
 
-        NotesAdaptor adaptor = new NotesAdaptor(this);
+        adaptor = new NotesAdaptor(this);
         adaptor.setNoteClicked(new OnNoteClicked() {
             @Override
             public void onNoteClicked(Note notes) {
@@ -127,6 +131,15 @@ public class NotesListFragment extends Fragment {
                             .addToBackStack("detail_notes")
                             .commit();
                 }
+
+            }
+
+            @Override
+            public void onNoteLongClicked(Note note, int index) {
+
+                selectedNote = note;
+                selectedPosition = index;
+
 
             }
         });
@@ -188,7 +201,19 @@ public class NotesListFragment extends Fragment {
                 return true;
 
             case R.id.action_delete:
-                Toast.makeText(requireContext(),"delete", Toast.LENGTH_SHORT).show();
+                InMemoryNotesRepository.getInstance(requireContext()).deleteNote(selectedNote, new Callback<Void>() {
+                    @Override
+                    public void onSuccess(Void data) {
+
+                        adaptor.deleteNote(selectedNote);
+                        adaptor.notifyItemRemoved(selectedPosition);
+                    }
+
+                    @Override
+                    public void onError(Throwable exception) {
+
+                    }
+                });
                 return true;
         }
 

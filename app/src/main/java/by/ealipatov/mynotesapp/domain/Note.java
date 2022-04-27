@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Note implements Parcelable {
 
@@ -65,5 +66,18 @@ public class Note implements Parcelable {
         parcel.writeString(description);
         parcel.writeString(date.toString());
         parcel.writeByte((byte) (important ? 1 : 0));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Note note = (Note) o;
+        return important == note.important && Objects.equals(name, note.name) && Objects.equals(description, note.description) && Objects.equals(date, note.date);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, description, important, date);
     }
 }
