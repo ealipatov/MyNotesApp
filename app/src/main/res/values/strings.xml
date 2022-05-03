@@ -1,3 +1,40 @@
 <resources>
     <string name="app_name">MyNotesApp</string>
+    <string name="notes">Notes</string>
+    <string name="hello_screen">Приложение ЗАМЕТКИ</string>
+    <string name="new_note">Новая заметка</string>
+    <string name="enter_message">Введите сообщение</string>
+    <string name="save">Сохранить</string>
+    <string name="press_to_btn">Нажмите на иконку для старта</string>
+    <string name="about">О программе</string>
+    <string name="settings">Настройки</string>
+    <string name="notes_details">Details</string>
+    <string name="action_search">Поиск</string>
+    <string name="action_sort">Сортировать</string>
+    <string name="action_send">Отправить</string>
+    <string name="action_remind">Напомнить</string>
+    <string name="drawer_open">Открыть шторку</string>
+    <string name="drawer_close">Закрыть шторку</string>
+    <string name="name">Заметки</string>
+    <string name="app_notes">Меню приложения:</string>
+    <string name="action_close">Закрыть</string>
+    <string name="app_close"> Вы действительно хотите выйти из приложения?</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="about_body">Много много буков о сей чудной программе будет здесь написано.</string>
+    <string name="action_notes">Список заметок</string>
+    <string name="staying">Остаемся</string>
+    <string name="find">Поиск</string>
+    <string name="sort">Сортировка</string>
+    <string name="send">Отправить</string>
+    <string name="remind">Напомнить</string>
+    <string name="importance">Важность</string>
+    <string name="enter_title">Введите заголовок</string>
+    <string name="if_important">Отметить как важное?</string>
+    <string name="Edit">Редактировать</string>
+    <string name="delete">Удалить</string>
+    <string name="title">Заголовок</string>
+    <string name="message">Содержание</string>
+    <string name="note_is_saved">Заметка сохранена</string>
+
 </resources>
