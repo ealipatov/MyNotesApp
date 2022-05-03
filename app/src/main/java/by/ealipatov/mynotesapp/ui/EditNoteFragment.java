@@ -22,11 +22,7 @@ public class EditNoteFragment extends BottomSheetDialogFragment {
 
     public static final String EDIT_KEY_RESULT = "EDIT_NOTE_KEY_RESULT";
     public static final String ARG_NOTE = "ARG_NOTE";
-/*
-    public static EditNoteFragment addInstance() {
-        return new EditNoteFragment();
-    }
-*/
+
     public static EditNoteFragment editInstance(Note note) {
 
         Bundle args = new Bundle();
@@ -49,21 +45,21 @@ public class EditNoteFragment extends BottomSheetDialogFragment {
 
         Note noteToEdit = null;
 
-        //Проверка что есть что редактировать. Это если двойное меню редактирование/добавление.
-/*
+        //Проверка что есть что редактировать.
         if (getArguments() != null && getArguments().containsKey(ARG_NOTE)) {
             noteToEdit = getArguments().getParcelable(ARG_NOTE);
         }
-*/
-        noteToEdit = getArguments().getParcelable(ARG_NOTE);
 
-        EditText title = view.findViewById(R.id.title);
-        EditText message = view.findViewById(R.id.message);
+        EditText title = view.findViewById(R.id.title_edit);
+        EditText text = view.findViewById(R.id.text_edit);
+        CheckBox checkBox = view.findViewById(R.id.checkbox_important_edit);
 
         if (noteToEdit != null) {
             //Предзаполняем поля редактируемой заметки
             title.setText(noteToEdit.getName());
-            message.setText(noteToEdit.getDescription());
+            text.setText(noteToEdit.getDescription());
+            checkBox.setChecked(noteToEdit.getImportant());
+
         }
 
         Button btnSave = view.findViewById(R.id.save);
@@ -75,30 +71,28 @@ public class EditNoteFragment extends BottomSheetDialogFragment {
 
                 btnSave.setEnabled(false);
 
-                    InMemoryNotesRepository.getInstance(requireContext()).editNote(finalNoteToEdit, title.getText().toString(), message.getText().toString(),  new Callback<Note>() {
-                        @Override
-                        public void onSuccess(Note data) {
+                InMemoryNotesRepository.getInstance(requireContext()).editNote(finalNoteToEdit, title.getText().toString(), text.getText().toString(), checkBox, new Callback<Note>() {
+                    @Override
+                    public void onSuccess(Note data) {
 
-                            Bundle bundle = new Bundle();
-                            bundle.putParcelable(ARG_NOTE, data);
+                        Bundle bundle = new Bundle();
+                        bundle.putParcelable(ARG_NOTE, data);
 
-                            getParentFragmentManager().setFragmentResult(EDIT_KEY_RESULT, bundle);
+                        getParentFragmentManager().setFragmentResult(EDIT_KEY_RESULT, bundle);
 
-                            btnSave.setEnabled(true);
+                        btnSave.setEnabled(true);
 
-                            dismiss();
+                        dismiss();
 
-                        }
+                    }
 
-                        @Override
-                        public void onError(Throwable exception) {
-                            btnSave.setEnabled(true);
-                        }
-                    });
+                    @Override
+                    public void onError(Throwable exception) {
+                        btnSave.setEnabled(true);
+                    }
+                });
 
-
-                }
-
+            }
         });
     }
 

@@ -3,7 +3,6 @@ package by.ealipatov.mynotesapp.ui;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
@@ -21,7 +20,7 @@ import by.ealipatov.mynotesapp.domain.Note;
 
 public class AddNewNoteFragment extends Fragment {
 
-    public static final String KEY_RESULT = "ADD_NEW_NOTE_KEY_RESULT";
+    public static final String KEY_RESULT = "KEY_RESULT";
     public static final String ARG_NOTE = "ARG_NOTE";
 
     public AddNewNoteFragment() {
@@ -60,7 +59,8 @@ public class AddNewNoteFragment extends Fragment {
                         }
                     });
 
-                    Snackbar.make(view, "Заметка сохранена", Snackbar.LENGTH_INDEFINITE).show();
+                    Snackbar.make(view, R.string.note_is_saved, Snackbar.LENGTH_INDEFINITE).show();
+
                     return true;
                 }
                 return false;

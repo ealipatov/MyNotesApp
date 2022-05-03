@@ -35,5 +35,6 @@
     <string name="delete">Удалить</string>
     <string name="title">Заголовок</string>
     <string name="message">Содержание</string>
+    <string name="note_is_saved">Заметка сохранена</string>
 
 </resources>

@@ -34,7 +34,6 @@ public class NotesListFragment extends Fragment {
 
     public static final String NOTES_CLICKED_KEY = "NOTES_CLICKED_KEY";
     public static final String SELECTED_NOTES = "SELECTED_NOTES";
-    public NoteDetailsFragment noteDetailsFragment;
     private Note selectedNote;
     private int selectedPosition;
     private NotesAdaptor adaptor;
@@ -84,7 +83,8 @@ public class NotesListFragment extends Fragment {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
 
-                                        getActivity().finish();
+                                       getActivity().finish();
+
                                     }
                                 })
                                 .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
@@ -139,7 +139,6 @@ public class NotesListFragment extends Fragment {
 
                 selectedNote = note;
                 selectedPosition = index;
-
             }
         });
 
@@ -168,20 +167,6 @@ public class NotesListFragment extends Fragment {
             }
         });
 
-        getParentFragmentManager()
-                .setFragmentResultListener(AddNewNoteFragment.KEY_RESULT, getViewLifecycleOwner(), new FragmentResultListener() {
-                    @Override
-                    public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
-                        Note note = result.getParcelable(AddNewNoteFragment.ARG_NOTE);
-
-                        int index = adaptor.addNote(note);
-
-                        adaptor.notifyItemInserted(index);
-
-                        notesList.smoothScrollToPosition(index);
-                    }
-                });
-
         getParentFragmentManager().
                 setFragmentResultListener(EditNoteFragment.EDIT_KEY_RESULT, getViewLifecycleOwner(), new FragmentResultListener() {
                     @Override
@@ -189,6 +174,7 @@ public class NotesListFragment extends Fragment {
                         Note note = result.getParcelable(AddNewNoteFragment.ARG_NOTE);
 
                         adaptor.editNote(note, selectedPosition);
+
                         adaptor.notifyItemChanged(selectedPosition);
                     }
                 });
@@ -232,4 +218,5 @@ public class NotesListFragment extends Fragment {
 
         return super.onContextItemSelected(item);
     }
+
 }

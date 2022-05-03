@@ -110,7 +110,7 @@ public class NoteDetailsFragment extends Fragment {
         description.setText(notes.getDescription());
         date.setText(simpleDateFormat.format(notes.getDate()));
 
-        if (notes.isImportant()) {
+        if (!notes.getImportant()) {
             important.setImageResource(R.drawable.ic_baseline_assignment_24);
         } else {
             important.setImageResource(R.drawable.ic_baseline_assignment_late_24);

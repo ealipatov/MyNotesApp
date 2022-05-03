@@ -31,7 +31,6 @@
             android:layout_marginTop="@dimen/layout_marginTop"
             android:textSize="@dimen/text_size_head_details"
 
-            app:layout_constraintBottom_toBottomOf="@id/important"
             app:layout_constraintEnd_toStartOf="@id/important"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -50,6 +49,8 @@
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/name"
+            app:layout_constraintStart_toEndOf="@id/name"
 
             tools:src="@drawable/ic_baseline_assignment_late_24" />
 
@@ -75,9 +76,10 @@
             android:layout_marginEnd="@dimen/layout_marginStart"
             android:gravity="right"
 
-            app:layout_constraintBottom_toTopOf="@id/bottom_nav"
-            app:layout_constraintEnd_toEndOf="@id/bottom_nav"
-            app:layout_constraintStart_toStartOf="@+id/bottom_nav"
+            app:layout_constraintStart_toStartOf="@+id/description"
+            app:layout_constraintTop_toBottomOf="@id/description"
+            app:layout_constraintEnd_toEndOf="@id/important"
+
 
             tools:src="test" />
 

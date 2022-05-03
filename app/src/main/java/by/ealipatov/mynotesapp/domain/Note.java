@@ -35,7 +35,7 @@ public class Note implements Parcelable {
     protected Note(Parcel in) {
         name = in.readString();
         description = in.readString();
-        date = new Date();              // in.readString();
+        date = new Date(in.readLong());
         important = in.readByte() != 0;
     }
 
@@ -51,8 +51,8 @@ public class Note implements Parcelable {
         return date;
     }
 
-    public boolean isImportant() {
-        return !important;
+    public boolean getImportant() {
+        return important;
     }
 
     @Override
@@ -64,7 +64,7 @@ public class Note implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(name);
         parcel.writeString(description);
-        parcel.writeString(date.toString());
+        parcel.writeLong(date.getTime());
         parcel.writeByte((byte) (important ? 1 : 0));
     }
 

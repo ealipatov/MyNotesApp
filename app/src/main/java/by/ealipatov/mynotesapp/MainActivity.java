@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -19,6 +22,38 @@ import by.ealipatov.mynotesapp.ui.ToolbarHolder;
 public class MainActivity extends AppCompatActivity implements ToolbarHolder {
 
     private DrawerLayout drawerLayout;
+
+    @Override
+    public void onBackPressed() {
+
+        if(getSupportFragmentManager().getBackStackEntryCount() == 0){
+
+            new AlertDialog.Builder(this)
+                    .setTitle(R.string.app_name)
+                    .setMessage(R.string.app_close)
+                    .setIcon(R.drawable.ic_baseline_clear_24)
+                    .setCancelable(false)
+                    .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                            finish();
+
+                        }
+                    })
+                    .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Toast.makeText(getApplicationContext(), R.string.staying, Toast.LENGTH_SHORT).show();
+                        }
+                    }).show();
+
+        } else {
+            getSupportFragmentManager().popBackStack();
+        }
+
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

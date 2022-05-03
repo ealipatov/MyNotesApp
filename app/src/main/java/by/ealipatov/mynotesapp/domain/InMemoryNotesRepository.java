@@ -15,11 +15,16 @@ import java.util.concurrent.Executors;
 public class InMemoryNotesRepository implements NotesRepository {
 
     private static NotesRepository INSTANCE;
+    boolean important = false;
     private Executor executor = Executors.newSingleThreadExecutor();
     private Handler handler = new Handler(Looper.getMainLooper());
     private ArrayList<Note> data = new ArrayList<>();
 
     public InMemoryNotesRepository(Context context) {
+    }
+
+    public InMemoryNotesRepository() {
+
     }
 
     public static NotesRepository getInstance(Context context) {
@@ -30,23 +35,12 @@ public class InMemoryNotesRepository implements NotesRepository {
         return INSTANCE;
     }
 
-    public InMemoryNotesRepository() {
-
-    }
-
-
     @Override
     public void getAll(Callback<List<Note>> callback) {
 
         executor.execute(new Runnable() {
             @Override
             public void run() {
-
-                try {
-                    Thread.sleep(2000L);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
 
                 handler.post(new Runnable() {
                     @Override
@@ -70,10 +64,7 @@ public class InMemoryNotesRepository implements NotesRepository {
                     e.printStackTrace();
                 }
 
-                boolean important = false;
-                if(checkBox.isChecked()){
-                    important = true;
-                }
+                important = checkBox.isChecked();
 
                 Note note = new Note(title, text, new Date(), important);
                 data.add(note);
@@ -112,22 +103,18 @@ public class InMemoryNotesRepository implements NotesRepository {
     }
 
     @Override
-    public void editNote(Note note, String title, String text, Callback<Note> callback) {
+    public void editNote(Note note, String title, String text, CheckBox checkBox, Callback<Note> callback) {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                try {
-                    Thread.sleep(1000L);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
 
-                //Note newNote = new Note(title, text, note.getDate(), note.isImportant());
-                Note newNote = new Note(title, text, new Date(), false);
+                important = checkBox.isChecked();
+
+                Note newNote = new Note(title, text, note.getDate(), important);
 
                 int index = data.indexOf(note);
 
-                data.set(index + 1, newNote);
+                data.set(index, newNote);
 
                 handler.post(new Runnable() {
                     @Override

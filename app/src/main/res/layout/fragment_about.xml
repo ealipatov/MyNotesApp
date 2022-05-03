@@ -19,6 +19,7 @@
         android:id="@+id/body"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:paddingStart="@dimen/padding_top"
         android:paddingTop="@dimen/padding_top"
         android:text="@string/about_body"
         app:layout_constraintEnd_toEndOf="parent"
