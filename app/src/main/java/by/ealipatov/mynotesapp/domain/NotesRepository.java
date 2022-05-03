@@ -13,4 +13,6 @@ public interface NotesRepository {
 
     void deleteNote(Note note, Callback<Void> callback);
 
+    void editNote(Note note, String title, String text, Callback<Note> callback);
+
 }

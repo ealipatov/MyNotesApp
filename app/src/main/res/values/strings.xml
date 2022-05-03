@@ -33,5 +33,7 @@
     <string name="if_important">Отметить как важное?</string>
     <string name="Edit">Редактировать</string>
     <string name="delete">Удалить</string>
+    <string name="title">Заголовок</string>
+    <string name="message">Содержание</string>
 
 </resources>

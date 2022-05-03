@@ -88,6 +88,11 @@ public class NotesAdaptor extends RecyclerView.Adapter<NotesAdaptor.NotesViewHol
         dataNotes.remove(selectedNote);
     }
 
+    public void editNote(Note note, int selectedPosition) {
+        dataNotes.set(selectedPosition, note);
+    }
+
+
     class NotesViewHolder extends RecyclerView.ViewHolder {
 
         TextView name;

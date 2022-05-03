@@ -19,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -131,7 +132,6 @@ public class NotesListFragment extends Fragment {
                             .addToBackStack("detail_notes")
                             .commit();
                 }
-
             }
 
             @Override
@@ -139,7 +139,6 @@ public class NotesListFragment extends Fragment {
 
                 selectedNote = note;
                 selectedPosition = index;
-
 
             }
         });
@@ -168,20 +167,31 @@ public class NotesListFragment extends Fragment {
 
             }
         });
-/*
-        getParentFragmentManager().
-                setFragmentResultListener(AddNewNoteFragment.KEY_RESULT, getViewLifecycleOwner(), new FragmentResultListener() {
+
+        getParentFragmentManager()
+                .setFragmentResultListener(AddNewNoteFragment.KEY_RESULT, getViewLifecycleOwner(), new FragmentResultListener() {
                     @Override
                     public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
                         Note note = result.getParcelable(AddNewNoteFragment.ARG_NOTE);
+
                         int index = adaptor.addNote(note);
+
                         adaptor.notifyItemInserted(index);
 
                         notesList.smoothScrollToPosition(index);
                     }
                 });
-*/
 
+        getParentFragmentManager().
+                setFragmentResultListener(EditNoteFragment.EDIT_KEY_RESULT, getViewLifecycleOwner(), new FragmentResultListener() {
+                    @Override
+                    public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+                        Note note = result.getParcelable(AddNewNoteFragment.ARG_NOTE);
+
+                        adaptor.editNote(note, selectedPosition);
+                        adaptor.notifyItemChanged(selectedPosition);
+                    }
+                });
     }
 
     @Override
@@ -195,9 +205,12 @@ public class NotesListFragment extends Fragment {
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.action_edit:
-                Toast.makeText(requireContext(),"edit", Toast.LENGTH_SHORT).show();
+
+                EditNoteFragment.editInstance(selectedNote)
+                        .show(getParentFragmentManager(), "EditNoteFragment");
+
                 return true;
 
             case R.id.action_delete:
