@@ -20,31 +20,39 @@ public class Note implements Parcelable {
         }
     };
 
-    private final String name;
-    private final String description;
+
+    private final String id;
+    private final String title;
+    private final String text;
     private final boolean important;
     private final Date date;
 
-    public Note(String name, String description, Date date, boolean important) {
-        this.name = name;
-        this.description = description;
+    public Note(String id, String title, String text, Date date, boolean important) {
+        this.id = id;
+        this.title = title;
+        this.text = text;
         this.date = date;
         this.important = important;
     }
 
     protected Note(Parcel in) {
-        name = in.readString();
-        description = in.readString();
+        id = in.readString();
+        title = in.readString();
+        text = in.readString();
         date = new Date(in.readLong());
         important = in.readByte() != 0;
     }
 
-    public String getName() {
-        return name;
+    public String getId() {
+        return id;
     }
 
-    public String getDescription() {
-        return description;
+    public String getTitle() {
+        return title;
+    }
+
+    public String getText() {
+        return text;
     }
 
     public Date getDate() {
@@ -62,8 +70,9 @@ public class Note implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(name);
-        parcel.writeString(description);
+        parcel.writeString(id);
+        parcel.writeString(title);
+        parcel.writeString(text);
         parcel.writeLong(date.getTime());
         parcel.writeByte((byte) (important ? 1 : 0));
     }
@@ -73,11 +82,11 @@ public class Note implements Parcelable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Note note = (Note) o;
-        return important == note.important && Objects.equals(name, note.name) && Objects.equals(description, note.description) && Objects.equals(date, note.date);
+        return important == note.important && Objects.equals(id, note.id) && Objects.equals(title, note.title) && Objects.equals(text, note.text) && Objects.equals(date, note.date);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, description, important, date);
+        return Objects.hash(id, title, text, important, date);
     }
 }

@@ -9,6 +9,7 @@ import android.widget.CheckBox;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -66,7 +67,8 @@ public class InMemoryNotesRepository implements NotesRepository {
 
                 important = checkBox.isChecked();
 
-                Note note = new Note(title, text, new Date(), important);
+
+                Note note = new Note(UUID.randomUUID().toString(), title, text, new Date(), important);
                 data.add(note);
 
                 handler.post(new Runnable() {
@@ -110,7 +112,7 @@ public class InMemoryNotesRepository implements NotesRepository {
 
                 important = checkBox.isChecked();
 
-                Note newNote = new Note(title, text, note.getDate(), important);
+                Note newNote = new Note(note.getId(), title, text, note.getDate(), important);
 
                 int index = data.indexOf(note);
 

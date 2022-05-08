@@ -15,6 +15,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import by.ealipatov.mynotesapp.R;
 import by.ealipatov.mynotesapp.domain.Callback;
+import by.ealipatov.mynotesapp.domain.Dependencies;
 import by.ealipatov.mynotesapp.domain.InMemoryNotesRepository;
 import by.ealipatov.mynotesapp.domain.Note;
 
@@ -43,7 +44,7 @@ public class AddNewNoteFragment extends Fragment {
 
                 if (item.getItemId() == R.id.action_save) {
 
-                    InMemoryNotesRepository.getInstance(requireContext()).addNote(title.getText().toString(), text.getText().toString(), checkBox, new Callback<Note>() {
+                    Dependencies.getNotesRepository().addNote(title.getText().toString(), text.getText().toString(), checkBox, new Callback<Note>() {
                         @Override
                         public void onSuccess(Note data) {
 

@@ -15,6 +15,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import by.ealipatov.mynotesapp.R;
 import by.ealipatov.mynotesapp.domain.Callback;
+import by.ealipatov.mynotesapp.domain.Dependencies;
 import by.ealipatov.mynotesapp.domain.InMemoryNotesRepository;
 import by.ealipatov.mynotesapp.domain.Note;
 
@@ -56,8 +57,8 @@ public class EditNoteFragment extends BottomSheetDialogFragment {
 
         if (noteToEdit != null) {
             //Предзаполняем поля редактируемой заметки
-            title.setText(noteToEdit.getName());
-            text.setText(noteToEdit.getDescription());
+            title.setText(noteToEdit.getTitle());
+            text.setText(noteToEdit.getText());
             checkBox.setChecked(noteToEdit.getImportant());
 
         }
@@ -71,7 +72,7 @@ public class EditNoteFragment extends BottomSheetDialogFragment {
 
                 btnSave.setEnabled(false);
 
-                InMemoryNotesRepository.getInstance(requireContext()).editNote(finalNoteToEdit, title.getText().toString(), text.getText().toString(), checkBox, new Callback<Note>() {
+                Dependencies.getNotesRepository().editNote(finalNoteToEdit, title.getText().toString(), text.getText().toString(), checkBox, new Callback<Note>() {
                     @Override
                     public void onSuccess(Note data) {
 

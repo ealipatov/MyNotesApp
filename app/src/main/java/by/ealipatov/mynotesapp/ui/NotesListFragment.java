@@ -27,6 +27,7 @@ import java.util.List;
 
 import by.ealipatov.mynotesapp.R;
 import by.ealipatov.mynotesapp.domain.Callback;
+import by.ealipatov.mynotesapp.domain.Dependencies;
 import by.ealipatov.mynotesapp.domain.InMemoryNotesRepository;
 import by.ealipatov.mynotesapp.domain.Note;
 
@@ -148,7 +149,7 @@ public class NotesListFragment extends Fragment {
 
         progressBar.setVisibility(View.VISIBLE);
 
-        InMemoryNotesRepository.getInstance(requireContext()).getAll(new Callback<List<Note>>() {
+        Dependencies.getNotesRepository().getAll(new Callback<List<Note>>() {
             @Override
             public void onSuccess(List<Note> data) {
 
@@ -200,7 +201,7 @@ public class NotesListFragment extends Fragment {
                 return true;
 
             case R.id.action_delete:
-                InMemoryNotesRepository.getInstance(requireContext()).deleteNote(selectedNote, new Callback<Void>() {
+                Dependencies.getNotesRepository().deleteNote(selectedNote, new Callback<Void>() {
                     @Override
                     public void onSuccess(Void data) {
 
