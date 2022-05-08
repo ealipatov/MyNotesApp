@@ -36,5 +36,8 @@
     <string name="title">Заголовок</string>
     <string name="message">Содержание</string>
     <string name="note_is_saved">Заметка сохранена</string>
+    <string name="search">Искать</string>
+    <string name="note_is_searched">найдено</string>
+    <string name="note_is_not_searched">не найдено</string>
 
 </resources>

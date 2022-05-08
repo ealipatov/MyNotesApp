@@ -19,6 +19,8 @@
         <entry key="..\:/Android/MyNotesApp/app/src/main/res/layout/fragment_hello_screen.xml" value="0.1" />
         <entry key="..\:/Android/MyNotesApp/app/src/main/res/layout/fragment_none_edit.xml" value="0.19947916666666668" />
         <entry key="..\:/Android/MyNotesApp/app/src/main/res/layout/fragment_note_edit.xml" value="0.19947916666666668" />
+        <entry key="..\:/Android/MyNotesApp/app/src/main/res/layout/fragment_note_finf.xml" value="0.19947916666666668" />
+        <entry key="..\:/Android/MyNotesApp/app/src/main/res/layout/fragment_note_search.xml" value="0.19947916666666668" />
         <entry key="..\:/Android/MyNotesApp/app/src/main/res/layout/fragment_notes_details.xml" value="0.20416666666666666" />
         <entry key="..\:/Android/MyNotesApp/app/src/main/res/layout/fragment_notes_list.xml" value="0.20416666666666666" />
         <entry key="..\:/Android/MyNotesApp/app/src/main/res/layout/fragment_setting.xml" value="0.20416666666666666" />

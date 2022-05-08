@@ -15,4 +15,6 @@ public interface NotesRepository {
 
     void editNote(Note note, String title, String text, CheckBox checkBox, Callback<Note> callback);
 
+    void searchNote(String search, Callback<List<Note>> callback);
+
 }

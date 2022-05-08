@@ -28,7 +28,6 @@ import java.util.List;
 import by.ealipatov.mynotesapp.R;
 import by.ealipatov.mynotesapp.domain.Callback;
 import by.ealipatov.mynotesapp.domain.Dependencies;
-import by.ealipatov.mynotesapp.domain.InMemoryNotesRepository;
 import by.ealipatov.mynotesapp.domain.Note;
 
 public class NotesListFragment extends Fragment {
@@ -69,11 +68,13 @@ public class NotesListFragment extends Fragment {
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.action_search:
-                        Toast.makeText(requireContext(), R.string.find, Toast.LENGTH_SHORT).show();
+                        new SearchNoteFragment().show(getParentFragmentManager(), "SearchNoteFragment");
                         return true;
+
                     case R.id.action_sort:
                         Toast.makeText(requireContext(), R.string.sort, Toast.LENGTH_SHORT).show();
                         return true;
+
                     case R.id.action_close:
                         new AlertDialog.Builder(requireContext())
                                 .setTitle(R.string.app_name)
@@ -84,7 +85,7 @@ public class NotesListFragment extends Fragment {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
 
-                                       getActivity().finish();
+                                        getActivity().finish();
 
                                     }
                                 })

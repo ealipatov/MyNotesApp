@@ -75,6 +75,7 @@ public class FireStoreNotesRepository implements NotesRepository {
 
                         callback.onSuccess(new Note(documentReference.getId(), title, text, date, important));
                     }
+
                 });
 
     }
@@ -115,6 +116,37 @@ public class FireStoreNotesRepository implements NotesRepository {
                         Note result = new Note(note.getId(), title, text, note.getDate(), important);
 
                         callback.onSuccess(result);
+                    }
+                });
+
+    }
+
+    @Override
+    public void searchNote(String search, Callback<List<Note>> callback) {
+
+        firestore.collection(NOTES)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        ArrayList<Note> result = new ArrayList<>();
+
+                        for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots.getDocuments()) {
+
+                            String id = documentSnapshot.getId();
+                            String title = documentSnapshot.getString(KEY_TITLE);
+                            String text = documentSnapshot.getString(KEY_TEXT);
+                            Date date = documentSnapshot.getDate(KEY_DATE);
+                            boolean important = documentSnapshot.getBoolean(KEY_IMPORTANT);
+
+                            if(title.equals(search)){
+                                result.add(new Note(id, title, text, date, important));
+                            }
+
+                        }
+
+                        callback.onSuccess(result);
+
                     }
                 });
 

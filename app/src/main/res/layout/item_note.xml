@@ -22,7 +22,7 @@
             android:paddingVertical="@dimen/padding_vertical">
 
             <TextView
-                android:id="@+id/name"
+                android:id="@+id/title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
@@ -41,8 +41,8 @@
 
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/important"
-                app:layout_constraintStart_toStartOf="@id/name"
-                app:layout_constraintTop_toBottomOf="@id/name"
+                app:layout_constraintStart_toStartOf="@id/title"
+                app:layout_constraintTop_toBottomOf="@id/title"
 
                 tools:text="data" />
 
@@ -56,7 +56,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/date"
-                app:layout_constraintTop_toBottomOf="@id/name"
+                app:layout_constraintTop_toBottomOf="@id/title"
 
                 tools:src="@drawable/ic_baseline_assignment_late_24" />
 

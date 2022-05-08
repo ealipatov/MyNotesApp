@@ -56,7 +56,7 @@ public class NotesAdaptor extends RecyclerView.Adapter<NotesAdaptor.NotesViewHol
 
         Note note = dataNotes.get(position);
 
-        holder.name.setText(note.getTitle());
+        holder.title.setText(note.getTitle());
         holder.date.setText(simpleDateFormat.format(note.getDate()));
 
         if (!note.getImportant()) {
@@ -80,17 +80,21 @@ public class NotesAdaptor extends RecyclerView.Adapter<NotesAdaptor.NotesViewHol
         dataNotes.set(selectedPosition, note);
     }
 
+    public void searchNote(Note note, int selectedPosition) {
+        dataNotes.set(selectedPosition, note);
+    }
+
 
     class NotesViewHolder extends RecyclerView.ViewHolder {
 
-        TextView name;
+        TextView title;
         TextView date;
         ImageView important;
 
         public NotesViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            name = itemView.findViewById(R.id.name);
+            title = itemView.findViewById(R.id.title);
             date = itemView.findViewById(R.id.date);
             important = itemView.findViewById(R.id.important);
 

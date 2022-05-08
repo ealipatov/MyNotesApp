@@ -83,7 +83,7 @@ public class NoteDetailsFragment extends Fragment {
             }
         });
 
-        name = view.findViewById(R.id.name);
+        name = view.findViewById(R.id.title);
         description = view.findViewById(R.id.description);
         date = view.findViewById(R.id.date);
         important = view.findViewById(R.id.important);

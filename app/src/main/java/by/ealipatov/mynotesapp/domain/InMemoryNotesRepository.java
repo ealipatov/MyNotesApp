@@ -128,4 +128,9 @@ public class InMemoryNotesRepository implements NotesRepository {
         });
     }
 
+    @Override
+    public void searchNote(String search, Callback<List<Note>> callback) {
+        //TODO: реализовать поиск
+    }
+
 }

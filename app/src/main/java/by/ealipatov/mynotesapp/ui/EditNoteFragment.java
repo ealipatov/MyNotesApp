@@ -16,7 +16,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import by.ealipatov.mynotesapp.R;
 import by.ealipatov.mynotesapp.domain.Callback;
 import by.ealipatov.mynotesapp.domain.Dependencies;
-import by.ealipatov.mynotesapp.domain.InMemoryNotesRepository;
 import by.ealipatov.mynotesapp.domain.Note;
 
 public class EditNoteFragment extends BottomSheetDialogFragment {
